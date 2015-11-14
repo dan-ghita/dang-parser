@@ -1,0 +1,41 @@
+grammar Expression
+    include Types
+
+    rule expression
+        term whitespace* ('+' / '-') whitespace* expression / term
+    end
+
+    rule term
+        factor whitespace* ('*' / '/') whitespace* term / factor
+    end
+
+    rule factor
+        '(' whitespace* expression whitespace* ')' /
+        identifier_or_int
+    end
+
+    rule assignment
+        identifier whitespace* '=' whitespace* block_element
+    end
+
+    rule boolean_expression
+        (expression / bool) whitespace* boolean_operator whitespace* (block_element / bool) <BooleanExpression> / bool
+    end
+
+    rule boolean_operator
+        '==' / '!=' / '>=' / '<=' / '>' / '<'
+    end
+
+    rule if_statement
+        'when' whitespace+ boolean_expression whitespace+
+        'then' whitespace+ chained_elements
+        (whitespace+ ('otherwise' / 'ow') whitespace+ chained_elements)? <IfStatement>
+    end
+
+    rule for_loop
+        'select' whitespace+ identifier whitespace+
+        'from' whitespace+ (array / identifier) whitespace+
+        ('where' whitespace+ boolean_expression whitespace+)*
+        'do' whitespace+ chained_elements
+    end
+end

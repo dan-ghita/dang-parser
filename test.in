@@ -1,0 +1,103 @@
+# trivial data types
+0 1 -1 a A_b a123_r5 "a string" "" [1, 2, 3] [] true false
+1 to 5
+
+# expressions
+1 + 1
+1 + a
+a + 1
+a + a
+1 * 1
+1 * a
+a * 1
+a * b
+s + 5 * 8 * r + a + d
+( a )
+( 5 )
+( a +  b )
+( 5 + p )
+( x + p )
+( 5 + 3 )
+1 + ( a + 1 * 8 * 9 + 8)
+-( a + 1 * 8 / 9 + 8) - u
+
+# boolean expressions
+a > b
+a < b
+a <= b
+a >= b
+a == b
+true == false
+true == a == a + 5
+
+# assignment
+x = 1
+x = 1 + 1
+x = true
+x = 1 == 4
+x = functionCall()
+x = [1, 2]
+x = 1 to 6
+
+
+# if statement
+when a > b then
+    callBaby()
+ow when b < a then
+    a = 15
+    ow a = 0
+
+when 1 == 2
+then
+    # assignment
+    x = 3 + 6 * o
+    # expression
+    and rama - roa
+    # function call
+    and functionCall()
+otherwise
+    # assignment
+    x = 3 + 6
+    # expression
+    and rama - roa
+    # function call
+    and functionCall()
+
+
+# for loop
+select x from arr do y
+
+select x from 1 to n do f()
+
+# if in for
+select x from a to b where x > y do
+when 1 == 2 then
+    # assignment
+    x = 3 + 6 * o
+    # expression
+    and rama - roa
+    # function call
+    and functionCall()
+
+# for in if
+when true then
+    select x from a to b where x > y do
+        when 1 == 2 then x = 3 + 6 * o and functionCall()
+otherwise 8
+
+# function definition
+fun f does
+with a
+
+fun f does
+    select x from 1 to n do f()
+    select x from 1 to n do g()
+    select x from 1 to n do h()
+    select x from 1 to n do i()
+    select x from a to b where x > y do
+    when 1 == 2 then
+       x = 3 + 6 * o
+       and functionCall()
+with a4 and a5
+
+fun v does when true then f() a() b() c() with none
