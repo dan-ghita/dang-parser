@@ -31,7 +31,7 @@ grammar Types
     end
 
     rule function_call_parameter
-        identifier / int / string / array
+        array / identifier / int / string
     end
 
     rule parameters
@@ -59,8 +59,9 @@ grammar Types
     end
 
     rule reserved_words
-        'return' / 'fun' / 'does' / 'with' / 'int' / 'string' / 'when' / 'then'
-        / 'otherwise' / 'ow' / 'select' / 'from' / 'where' / 'do' / 'true' / 'false' / 'to' / 'none'
+        'return' / 'fun' / 'does' / 'with' / 'int' / 'string' / 'when' / 'then' /
+        'otherwise' / 'ow' / 'select' / 'from' / 'where' / 'do' / 'true' / 'false' /
+        'to' / 'none' / 'define' / 'as' / 'and' / 'return' / 'end'
     end
 
     rule identifier_or_int

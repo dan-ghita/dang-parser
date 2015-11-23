@@ -21,7 +21,10 @@ module Expression
     end
   end
 
-  class Operand < Treetop::Runtime::SyntaxNode
+  class Term < Treetop::Runtime::SyntaxNode
+  end
+
+  class Factor < Treetop::Runtime::SyntaxNode
   end
 
   class BooleanOperator < Treetop::Runtime::SyntaxNode

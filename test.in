@@ -1,6 +1,6 @@
 # trivial data types
-0 1 -1 a A_b a123_r5 "a string" "" [1, 2, 3] [] true false
-1 to 5
+0 1 -1 a A_b a123_r5 "a string" "" [1, 2, 3] [] true false 1 to 5 1 to n
+
 
 # expressions
 1 + 1
@@ -11,6 +11,10 @@ a + a
 1 * a
 a * 1
 a * b
+a % b
+2 % b
+a % 2
+1 % 2
 s + 5 * 8 * r + a + d
 ( a )
 ( 5 )
@@ -21,6 +25,7 @@ s + 5 * 8 * r + a + d
 1 + ( a + 1 * 8 * 9 + 8)
 -( a + 1 * 8 / 9 + 8) - u
 
+
 # boolean expressions
 a > b
 a < b
@@ -29,6 +34,16 @@ a >= b
 a == b
 true == false
 true == a == a + 5
+a % b - 1 >= a * (b % 2)
+
+
+# declaration
+define x as 3
+define x as "3"
+define x as [1, 2, 3]
+define x as true
+define x as 1 to 5
+
 
 # assignment
 x = 1
@@ -45,59 +60,76 @@ when a > b then
     callBaby()
 ow when b < a then
     a = 15
-    ow a = 0
+    ow a = 0 end
+end
 
 when 1 == 2
 then
     # assignment
     x = 3 + 6 * o
     # expression
-    and rama - roa
+    a - b
     # function call
-    and functionCall()
+    functionCall()
 otherwise
     # assignment
     x = 3 + 6
     # expression
-    and rama - roa
+    a - b
     # function call
-    and functionCall()
-
+    functionCall()
+end
 
 # for loop
-select x from arr do y
-
-select x from 1 to n do f()
+select x from arr do y end
+select x from 1 to n do f() end
 
 # if in for
 select x from a to b where x > y do
-when 1 == 2 then
-    # assignment
-    x = 3 + 6 * o
-    # expression
-    and rama - roa
-    # function call
-    and functionCall()
+    when 1 == 2 then x = 3 + 6 * o functionCall() end
+end
 
 # for in if
 when true then
     select x from a to b where x > y do
-        when 1 == 2 then x = 3 + 6 * o and functionCall()
+        when 1 == 2 then x = 3 + 6 * o functionCall() end
+    select x from a to b where x > y do
+            when 1 == 2 then x = 3 + 6 * o functionCall() end
+        end
+    end
 otherwise 8
+end
 
 # function definition
 fun f does
 with a
 
 fun f does
-    select x from 1 to n do f()
-    select x from 1 to n do g()
-    select x from 1 to n do h()
-    select x from 1 to n do i()
+    define a as 0
+    select x from 1 to n do f() end
+    select x from [1, 2, 3] where x % 2 == 0 do g() end
+    select x from 1 to n do h() i() end
     select x from a to b where x > y do
-    when 1 == 2 then
-       x = 3 + 6 * o
-       and functionCall()
-with a4 and a5
+        when 1 == false then
+           x = 3 + 6 * o
+           return functionCall()
+        ow
+            return
+        end
+    end
+with p1 p2
 
-fun v does when true then f() a() b() c() with none
+fun v does when true then f() a() end b() c() with none
+
+# function call
+f()
+f(1, "2", 1 to 5)
+
+when true then
+    when true then
+        f1() f2()
+    end
+    f3()
+otherwise
+    f4()
+end

@@ -12,7 +12,7 @@ grammar Grammar
     rule chained_elements
         line_comment* whitespace*
         function_body_element
-        (whitespace+ ('and' whitespace+ function_body_element / line_comment))*
+        (whitespace+ (function_body_element / line_comment))*
     end
 
     rule function_body
@@ -22,7 +22,7 @@ grammar Grammar
     end
 
     rule function_body_element
-        if_statement / for_loop / block_element
+        return / if_statement / for_loop / variable_declaration / block_element
     end
 
     rule block_element

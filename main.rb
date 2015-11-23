@@ -12,21 +12,54 @@ Treetop.load('parser')
 
 p = GrammarParser.new
 
-# s = '( 5 * 9 + 1 / 2 * 3 )'
-# s = 'false != true == 1'
-# if_statement = '( when true==false then ( 1 + 2 ) ow 5==true==4 )'
-# if_statement = 'when true then 1 ow when false then 2 ow 4'
-# s = '   select x from [1, 2, 3, 4] where true do %s' % if_statement
-# s.gsub! ' ', ''
+def count_nodes(ast)
+  unless ast.elements
+    return 1
+  end
 
+  cnt = 0
+
+  ast.elements.each do |e|
+    cnt += count_nodes(e)
+  end
+
+  return 1 + cnt
+end
+
+def tree_cleanup(ast)
+  unless ast.elements
+    return
+  end
+
+  to_delete = []
+
+  ast.elements.each do |e|
+    if ['', ' '].include? e.text_value then to_delete.push(e) else tree_cleanup(e) end
+  end
+
+  to_delete.each do |e|
+    ast.elements.delete(e)
+  end
+end
+
+# s = File.read('small_test.in');
 s = File.read('test.in');
 
 ast =  p.parse s
+
 
 print "AST:\n"
 if ast.nil?
   pp p.failure_reason
 else
+  print count_nodes(ast), "\n"
+
+  tree_cleanup(ast)
+
+  print count_nodes(ast), "\n"
+
   pp ast
   # pp ast.evaluate
 end
+
+

@@ -6,7 +6,7 @@ grammar Expression
     end
 
     rule term
-        factor whitespace* ('*' / '/') whitespace* term / factor
+        factor whitespace* ('%' / '*' / '/') whitespace* term / factor
     end
 
     rule factor
@@ -26,10 +26,19 @@ grammar Expression
         '==' / '!=' / '>=' / '<=' / '>' / '<'
     end
 
+    rule variable_declaration
+        'define' whitespace+ identifier whitespace+ 'as' whitespace+ block_element
+    end
+
+    rule return
+        'return' (whitespace+ block_element)?
+    end
+
     rule if_statement
         'when' whitespace+ boolean_expression whitespace+
         'then' whitespace+ chained_elements
-        (whitespace+ ('otherwise' / 'ow') whitespace+ chained_elements)? <IfStatement>
+        (whitespace+ ('otherwise' / 'ow') whitespace+ chained_elements)?
+        whitespace+ 'end' <IfStatement>
     end
 
     rule for_loop
@@ -37,5 +46,6 @@ grammar Expression
         'from' whitespace+ (array / identifier) whitespace+
         ('where' whitespace+ boolean_expression whitespace+)*
         'do' whitespace+ chained_elements
+        whitespace+ 'end'
     end
 end
