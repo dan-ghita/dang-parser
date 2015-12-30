@@ -1,6 +1,6 @@
 grammar Types
     rule int
-         '0' / '-'? digit+ <Integer>
+         '0' <Integer> / '-'? digit+ <Integer>
     end
 
     rule string
@@ -16,7 +16,7 @@ grammar Types
     end
 
     rule range
-        identifier_or_int whitespace+ 'to' whitespace+ identifier_or_int
+        identifier_or_int whitespace+ 'to' whitespace+ identifier_or_int <Range>
     end
 
     rule array_content
@@ -47,7 +47,7 @@ grammar Types
     end
 
     rule identifier
-        !(reserved_words whitespace+) letter (letter / '_' / digit)*
+        !(reserved_words whitespace+) letter (letter / '_' / digit)* <Identifier>
     end
 
     rule letter

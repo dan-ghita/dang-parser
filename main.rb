@@ -23,7 +23,7 @@ def count_nodes(ast)
     cnt += count_nodes(e)
   end
 
-  return 1 + cnt
+  1 + cnt
 end
 
 def tree_cleanup(ast)
@@ -34,18 +34,17 @@ def tree_cleanup(ast)
   to_delete = []
 
   ast.elements.each do |e|
-    if ['', ' '].include? e.text_value then to_delete.push(e) else tree_cleanup(e) end
+    if ['', ' ', '(', ')', "\n"].include? e.text_value
+      to_delete.push(e) else tree_cleanup(e) end
   end
 
-  to_delete.each do |e|
-    ast.elements.delete(e)
-  end
+  to_delete.each do |e| ast.elements.delete(e) end
 end
 
-# s = File.read('small_test.in');
-s = File.read('test.in');
+s = File.read('small_test.in')
+# s = File.read('test.in')
 
-ast =  p.parse s
+ast = p.parse s
 
 
 print "AST:\n"
@@ -53,13 +52,15 @@ if ast.nil?
   pp p.failure_reason
 else
   print count_nodes(ast), "\n"
-
   tree_cleanup(ast)
-
   print count_nodes(ast), "\n"
-
   pp ast
-  # pp ast.evaluate
-end
 
+  print "\n"
+  context = {}
+  context['a'] = ['8', 'Types::String']
+
+  print ast.evaluate( context ), "\n\n"
+  pp 'Context: ', context
+end
 

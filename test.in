@@ -2,6 +2,7 @@
 0 1 -1 a A_b a123_r5 "a string" "" [1, 2, 3] [] true false 1 to 5 1 to n
 
 
+a = 1 b = 2 c = 3 d = 4
 # expressions
 1 + 1
 1 + a
@@ -15,15 +16,15 @@ a % b
 2 % b
 a % 2
 1 % 2
-s + 5 * 8 * r + a + d
+a + 5 * 8 * b + a + c
 ( a )
 ( 5 )
-( a +  b )
-( 5 + p )
-( x + p )
+( a + b )
+( 5 + b )
+( a + b )
 ( 5 + 3 )
 1 + ( a + 1 * 8 * 9 + 8)
--( a + 1 * 8 / 9 + 8) - u
+-( a + 1 * 8 / 9 + 8) - b
 
 
 # boolean expressions
@@ -53,6 +54,8 @@ x = 1 == 4
 x = functionCall()
 x = [1, 2]
 x = 1 to 6
+
+# interpretable until this point
 
 
 # if statement

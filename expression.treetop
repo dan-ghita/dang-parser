@@ -2,20 +2,21 @@ grammar Expression
     include Types
 
     rule expression
-        term whitespace* ('+' / '-') whitespace* expression / term
+        term whitespace* ('+' / '-') whitespace* expression <Expression> / term
     end
 
     rule term
-        factor whitespace* ('%' / '*' / '/') whitespace* term / factor
+        factor whitespace* ('%' / '*' / '/') whitespace* term <Term> /
+        factor
     end
 
     rule factor
-        '(' whitespace* expression whitespace* ')' /
+        '(' whitespace* expression whitespace* ')' <Factor> /
         identifier_or_int
     end
 
     rule assignment
-        identifier whitespace* '=' whitespace* block_element
+        identifier whitespace* '=' whitespace* block_element <Assignment>
     end
 
     rule boolean_expression
@@ -27,7 +28,7 @@ grammar Expression
     end
 
     rule variable_declaration
-        'define' whitespace+ identifier whitespace+ 'as' whitespace+ block_element
+        'define' whitespace+ identifier whitespace+ 'as' whitespace+ block_element <Declaration>
     end
 
     rule return

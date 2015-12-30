@@ -2,7 +2,7 @@ grammar Grammar
     include Expression
 
     rule main
-        (whitespace* main_element whitespace*)*
+        (whitespace* main_element whitespace*)* <Main>
     end
 
     rule main_element
@@ -30,7 +30,7 @@ grammar Grammar
     end
 
     rule line_comment
-        '#' (!end_line . )* end_line
+        '#' (!end_line . )* end_line <LineComment>
     end
 
     rule function_declaration
