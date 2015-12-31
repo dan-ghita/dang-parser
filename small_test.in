@@ -1,57 +1,17 @@
-# trivial data types
-n = 5
-0 1 -1 "a string" "" [1, 2, 3] [] true false 1 to 5 1 to n
+arr = 1 to 10
+define y as 5
+define a as 0
+define b as 10
 
-
-a = 1 b = 2 c = 3 d = 4
-# expressions
-1 + 1
-1 + a
-a + 1
-a + a
-1 * 1
-1 * a
-a * 1
-a * b
-a % b
-2 % b
-a % 2
-1 % 2
-a + 5 * 8 * b + a + c
-( a )
-( 5 )
-( a + b )
-( 5 + b )
-( a + b )
-( 5 + 3 )
-1 + ( a + 1 * 8 * 9 + 8)
--( a + 1 * 8 / 9 + 8) - b
-
-
-# boolean expressions
-a > b
-a < b
-a <= b
-a >= b
-a == b
-true == false
-true == a == a + 5
-a % b - 1 >= a * (b % 2)
-
-
-# declaration
-define x as 3
-define x as "3"
-define x as [1, 2, 3]
-define x as true
-define x as 1 to 5
-
-
-# assignment
-x = 1
-x = 1 + 1
-x = true
-x = 1 == 4
-x = [1, 2]
-x = 1 to 6
-
+# for in if
+when true then
+    select x from a to b where x > y do
+        when 1 == 2 then x = 3 + 6 * o functionCall() end
+        select z from a to b where x > y do
+            when 2 == 2 then
+                x = 3 + 6
+            end
+        end
+    end
+otherwise 8
+end

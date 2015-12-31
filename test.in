@@ -55,8 +55,6 @@ x = functionCall()
 x = [1, 2]
 x = 1 to 6
 
-# interpretable until this point
-
 
 # if statement
 when a > b then
@@ -102,6 +100,8 @@ when true then
     end
 otherwise 8
 end
+
+# interpretable until this point
 
 # function definition
 fun f does

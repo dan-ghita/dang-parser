@@ -10,9 +10,9 @@ grammar Grammar
     end
 
     rule chained_elements
-        line_comment* whitespace*
-        function_body_element
+        ( line_comment / function_body_element )
         (whitespace+ (function_body_element / line_comment))*
+        <ChainedElement>
     end
 
     rule function_body
@@ -30,7 +30,7 @@ grammar Grammar
     end
 
     rule line_comment
-        '#' (!end_line . )* end_line <LineComment>
+        whitespace* '#' ( !end_line . )* &end_line <LineComment>
     end
 
     rule function_declaration

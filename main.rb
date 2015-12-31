@@ -33,8 +33,10 @@ def tree_cleanup(ast)
 
   to_delete = []
 
+  rex = /[\s\n\t]+/
+
   ast.elements.each do |e|
-    if ['', ' ', '(', ')', "\n"].include? e.text_value
+    if ['', ' ', '(', ')', "\n"].include? e.text_value or (!rex.match(e.text_value).nil? and rex.match(e.text_value)[0] == e.text_value)
       to_delete.push(e) else tree_cleanup(e) end
   end
 
@@ -58,7 +60,6 @@ else
 
   print "\n"
   context = {}
-  context['a'] = ['8', 'Types::String']
 
   print ast.evaluate( context ), "\n\n"
   pp 'Context: ', context

@@ -47,6 +47,6 @@ grammar Expression
         'from' whitespace+ (array / identifier) whitespace+
         ('where' whitespace+ boolean_expression whitespace+)*
         'do' whitespace+ chained_elements
-        whitespace+ 'end'
+        whitespace+ 'end' <ForLoop>
     end
 end
