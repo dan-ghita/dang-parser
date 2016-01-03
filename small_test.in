@@ -1,17 +1,9 @@
-arr = 1 to 10
-define y as 5
-define a as 0
-define b as 10
+fun f does
+    a = a
+    print("---------------------------------->", a, "\n")
+    print( b )
+    print( c)
+with a and b and c and d
 
-# for in if
-when true then
-    select x from a to b where x > y do
-        when 1 == 2 then x = 3 + 6 * o functionCall() end
-        select z from a to b where x > y do
-            when 2 == 2 then
-                x = 3 + 6
-            end
-        end
-    end
-otherwise 8
-end
+f(12, 13, 14, 15)
+

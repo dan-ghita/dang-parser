@@ -27,15 +27,15 @@ grammar Types
     end
 
     rule function_call_parameters
-        (function_call_parameter whitespace* ','  whitespace*)* function_call_parameter
+        function_call_parameter (whitespace* ','  whitespace* function_call_parameter )* <FunctionCallParameters>
     end
 
     rule function_call_parameter
-        array / identifier / int / string
+        block_element
     end
 
     rule parameters
-        (identifier whitespace* 'and' whitespace*)* identifier
+        identifier (whitespace+ 'and' whitespace+ identifier)* <Parameters>
     end
 
     rule whitespace
@@ -61,7 +61,7 @@ grammar Types
     rule reserved_words
         'return' / 'fun' / 'does' / 'with' / 'int' / 'string' / 'when' / 'then' /
         'otherwise' / 'ow' / 'select' / 'from' / 'where' / 'do' / 'true' / 'false' /
-        'to' / 'none' / 'define' / 'as' / 'and' / 'return' / 'end'
+        'to' / 'none' / 'define' / 'as' / 'and' / 'return' / 'end' / 'if' / 'else' / 'for'
     end
 
     rule identifier_or_int

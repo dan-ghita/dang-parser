@@ -7,7 +7,7 @@ module Types
 
   class String < Treetop::Runtime::SyntaxNode
     def evaluate( context )
-      text_value
+      text_value.gsub('"', '')
     end
   end
 
@@ -33,7 +33,33 @@ module Types
 
   class Identifier < Treetop::Runtime::SyntaxNode
     def evaluate( context )
+      raise "[x] Identifier #{text_value} is not declared in this context" unless context.has_key? text_value
       context[text_value][0]
+    end
+  end
+
+  class FunctionCallParameters < Treetop::Runtime::SyntaxNode
+    def evaluate( context )
+      parameters = []
+      parameters.push elements[0].evaluate( context )
+
+      unless elements[1].nil?
+        elements[1].elements.each { |node| parameters.push node.elements[1].evaluate( context ) }
+      end
+
+      parameters
+    end
+  end
+
+  class Parameters < Treetop::Runtime::SyntaxNode
+    def evaluate( context )
+      parameters = []
+      parameters.push elements[0].text_value
+      unless elements[1].nil?
+        elements[1].elements.each { |node| parameters.push node.elements[1].text_value }
+      end
+
+      parameters
     end
   end
 end

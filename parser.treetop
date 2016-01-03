@@ -18,7 +18,7 @@ grammar Grammar
     rule function_body
         line_comment* whitespace*
         function_body_element
-        (whitespace+ (function_body_element / line_comment))*
+        (whitespace+ (function_body_element / line_comment))* <FunctionBody>
     end
 
     rule function_body_element

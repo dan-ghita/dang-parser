@@ -51,13 +51,15 @@ module Expression
 
   class Assignment < Treetop::Runtime::SyntaxNode
     def evaluate( context )
-      context[elements[0].text_value] = [elements[2].evaluate( context ), elements[2].class.to_s]
+      value = elements[2].is_a?(Treetop::Runtime::SyntaxNode) ? elements[2].evaluate( context ) : elements[2]
+      context[elements[0].text_value] = [value, value.class.to_s]
     end
   end
 
   class Declaration < Treetop::Runtime::SyntaxNode
     def evaluate( context )
-      context[elements[1].text_value] = [elements[3].evaluate( context ), elements[3].class.to_s]
+      value = elements[3].is_a?(Treetop::Runtime::SyntaxNode) ? elements[3].evaluate( context ) : elements[3]
+      context[elements[1].text_value] = [value, value.class.to_s]
     end
   end
 
@@ -79,20 +81,20 @@ module Expression
       array = elements[3].evaluate( context )
 
       if elements[4].text_value.start_with?('where')
-        hasFilter = true
+        has_filter = true
         # where condition
         condition = elements[4].elements[0].elements[1]
         # do
         body = elements[6]
       else
-        hasFilter = false
+        has_filter = false
         # do
         body = elements[5]
       end
 
       array.each { |element|
         context[identifier] = [element, element.class.to_s]
-        unless hasFilter and !condition.evaluate( context )
+        unless has_filter and !condition.evaluate( context )
           body.evaluate( context )
         end
       }

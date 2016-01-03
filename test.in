@@ -47,6 +47,7 @@ define x as 1 to 5
 
 
 # assignment
+# r = (9 + 8) works but r = -(9 + 8) doesn't
 x = 1
 x = 1 + 1
 x = true
@@ -101,8 +102,6 @@ when true then
 otherwise 8
 end
 
-# interpretable until this point
-
 # function definition
 fun f does
 with a
@@ -136,3 +135,7 @@ when true then
 otherwise
     f4()
 end
+
+# interpretable until this point
+# return statements are ignored
+
